@@ -5,9 +5,7 @@
 
 ## Objective
 
-The goal of this project is to analyze the unemployment rate in France at the level of departments and anticipate its evolution using a predictive model.
-
-This repository contains the code and notebooks used to train survival models to tackle real-world predictive problems. It was developed as an experimentation project to support the explanation blog posts around survival models. For more information, you can find the articles here.
+This repository contains the code and notebooks used to train survival models to tackle real-world predictive problems. It was developed as an experimentation project to support the explanation blog posts around survival models. For more information, you can find the articles here:
 
 1. Part I - Survival Analysis: Predict Time-To-Event With Machine Learning
 
@@ -17,7 +15,7 @@ This repository contains the code and notebooks used to train survival models to
 
 2. Part II - Coming soon
 
-<div class="alert alert-block alert-info"> <b>NOTE: </b> You can find all my technical blog posts <a href = https://linafaik.medium.com/>here</a>. </div>
+<div class="alert alert-block alert-info"> You can find all my technical blog posts <a href = https://linafaik.medium.com/>here</a>. </div>
 
 ## Project Description
 
