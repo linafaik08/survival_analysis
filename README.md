@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# survival_analysis
-=======
 # Survival Analysis
 
 - Author: [Lina Faik](https://www.linkedin.com/in/lina-faik/)
