@@ -76,7 +76,4 @@ plotly==4.14.3
 
 ### Experiments
 
-To run experiments, you need:
-
-1. To download data from [Kaggle](https://www.kaggle.com/datasets/gsagar12/dspp1) and upload them in the directory `datasets/customer_subscription`.
-2. Run the notebooks in the order suggested by their names. The associated code is in the `src` directory.
+To run experiments, you need to run the notebooks in the order suggested by their names. The associated code is in the `src` directory.
