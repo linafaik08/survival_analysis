@@ -11,6 +11,7 @@ pio.templates.default = "plotly_white"
 
 from sksurv.functions import StepFunction
 from sksurv.nonparametric import kaplan_meier_estimator
+from sksurv.metrics import integrated_brier_score
 
 import itertools
     
@@ -28,18 +29,23 @@ def plot_feat_imp(cols, coef):
     
     return feat_importance, fig
     
-def get_bier_score(df, y_train, y_test, survs, times):
+def get_bier_score(df, y_train, y_test, survs, times, with_benchmark=True):
     
-    km_func = StepFunction(
-        *kaplan_meier_estimator(df["censored"].astype(bool), df["duration"])
-    )
+    if with_benchmark:
     
-    preds = {
-        'estimator': np.row_stack([ fn(times) for fn in survs]),
-        'random': 0.5 * np.ones((df.shape[0], times.shape[0])),
-        'kaplan_meier': np.tile(km_func(times), (df.shape[0], 1))
-    }
-    
+        km_func = StepFunction(
+            *kaplan_meier_estimator(df["censored"].astype(bool), df["duration"])
+        )
+        
+        preds = {
+            'estimator': np.row_stack([ fn(times) for fn in survs]),
+            'random': 0.5 * np.ones((df.shape[0], times.shape[0])),
+            'kaplan_meier': np.tile(km_func(times), (df.shape[0], 1))
+        }
+        
+    else:
+        preds = {'estimator': np.row_stack([ fn(times) for fn in survs])}
+        
     scores = {}
     for k, v in preds.items():
         scores[k] = integrated_brier_score(y_train, y_test, v, times)
