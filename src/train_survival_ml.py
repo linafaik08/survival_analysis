@@ -25,7 +25,14 @@ def plot_feat_imp(cols, coef):
     feat_importance["coef_abs"] = abs(feat_importance.coef)
     feat_importance.sort_values(by='coef_abs', ascending=True, inplace=True)
 
-    fig = px.bar(feat_importance, x="coef", y="feature", height= 600, width= 600)
+    fig = px.bar(feat_importance, x="coef", y="feature", height= 500, width= 600)
+    
+    fig.update_layout(
+        dict(
+            xaxis={'title' : 'Coefficient'}, 
+            yaxis={'title' : 'Feature'}
+        )
+    )
     
     return feat_importance, fig
     
