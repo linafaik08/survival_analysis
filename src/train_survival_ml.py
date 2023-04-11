@@ -11,7 +11,7 @@ pio.templates.default = "plotly_white"
 
 from sksurv.functions import StepFunction
 from sksurv.nonparametric import kaplan_meier_estimator
-from sksurv.metrics import integrated_brier_score
+from sksurv.metrics import integrated_brier_score, brier_score
 
 import itertools
     
@@ -36,12 +36,12 @@ def plot_feat_imp(cols, coef):
     
     return feat_importance, fig
     
-def get_bier_score(df, y_train, y_test, survs, times, with_benchmark=True):
+def get_bier_score(df, y_train, y_test, survs, times, col_target = "duration", with_benchmark=True):
     
     if with_benchmark:
     
         km_func = StepFunction(
-            *kaplan_meier_estimator(df["censored"].astype(bool), df["duration"])
+            *kaplan_meier_estimator(df["censored"].astype(bool), df[col_target])
         )
         
         preds = {
@@ -58,7 +58,18 @@ def get_bier_score(df, y_train, y_test, survs, times, with_benchmark=True):
         scores[k] = integrated_brier_score(y_train, y_test, v, times)
     
     return scores
-    
+
+
+def get_bier_curve(y_train, y_test, survs, times):
+    preds = {'estimator': np.row_stack([fn(times) for fn in survs])}
+
+    scores = []
+    for t in times:
+        preds = [fn(t) for fn in survs]
+        _, score = brier_score(y_train, y_test, preds, t)
+        scores.append(score[0])
+
+    return scores
     
 
 def fit_score(estimator, Xy, train_index, test_index, cols, col_target):
