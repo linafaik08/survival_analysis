@@ -16,8 +16,6 @@ This repository contains the code and notebooks used to train survival models to
    
    Practical Application to Rehospitalization
 
-   (link coming soon)
-
 <div class="alert alert-block alert-info"> You can find all my technical blog posts <a href = https://linafaik.medium.com/>here</a>. </div>
 
 ## Project Description
