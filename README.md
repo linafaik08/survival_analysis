@@ -86,7 +86,7 @@ src
 
 ### Requirement
 
-To code relies on the following libraries:
+The code relies on the following libraries:
 
 ```
 scikit-survival==0.19.0 
