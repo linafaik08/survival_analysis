@@ -12,7 +12,7 @@ This repository contains the code and notebooks used to train survival models to
 
    Practical Application to Customer Churn Prediction
 
-2. Part II - Survival Analysis: Leveraging Deep Learning for Time-to-Event Forecasting    
+2. [Part II - Survival Analysis: Leveraging Deep Learning for Time-to-Event Forecasting](https://towardsdatascience.com/survival-analysis-leveraging-deep-learning-for-time-to-event-forecasting-5c55bd4bb066)    
    
    Practical Application to Rehospitalization
 
